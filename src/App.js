@@ -1,20 +1,13 @@
 import React from 'react';
 import './App.css';
+import Rotas from './componentes/Rotas';
 
-import Header from './componentes/Header';
-import Footer from './componentes/footer';
-import HomePage from './componentes/HomePage';
 
-function App() {
-  return (
-    <div className="App">
-      <Header/>
-      <HomePage/>
-      <Footer/>
-
-    </div>
-  );
-}
+const App = () => (
+  <div className="App">
+    <Rotas/>
+  </div>
+);
 
 export default App;
 
