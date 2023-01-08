@@ -4,10 +4,27 @@ import './style.css';
 
 const List = () => {
 
-const {data} = prodApi.useGetProdsQuery();
+const {data, 
+  isLoading,
+  isSuccess,
+  isError
+} = prodApi.useGetProdsQuery();
 
 
-
+let content;
+if(isLoading){
+  content = <tr>Loading.....</tr>;
+}else if(isSuccess){
+  content = data && data.map(produtos => {
+    return (
+        <tr key={produtos.idProduto}>
+            <td className="show992">#{produtos.idProduto}</td>
+            <td>{produtos.descricao}</td>
+            <td>R$ {produtos.precoVenda.toFixed(2)}</td>   
+        </tr> )})
+}else if (isError){
+  content =  <tr><td>error</td></tr>
+}
 
 
  return  <div className="dsmeta-card">
@@ -24,15 +41,9 @@ const {data} = prodApi.useGetProdsQuery();
              </tr>
          </thead>
          <tbody>
-             {data && data.map(produtos => {
-                     return (
-                         <tr key={produtos.idProduto}>
-                             <td className="show992">#{produtos.idProduto}</td>
-                             <td>{produtos.descricao}</td>
-                             <td>R$ {produtos.precoVenda.toFixed(2)}</td>   
-                         </tr>
-                         )
-                 })}
+
+          {content}
+             
          </tbody>
      </table>
  </div>
