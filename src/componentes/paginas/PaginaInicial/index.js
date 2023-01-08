@@ -10,6 +10,7 @@ const PaginaInicial = () => (
       <Link className="opcao-front-end" to='/front-end'>Front-end</Link>
       <Link className="opcao-back-end" to='/back-end'>Back-end</Link>
       <Link className="opcao-StateHook" to='/StateHook'>State-Hook</Link>
+      <Link className="opcao-produtos" to='/produtos'>Lista de Produtos</Link>
     </div>
     
   </div>
